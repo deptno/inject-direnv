@@ -1,0 +1,7 @@
+.idea/
+.envrc
+*.ts
+*.spec.js
+*.png
+tsconfig.json
+yarn.lock
