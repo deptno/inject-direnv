@@ -1,14 +1,10 @@
-import * as fs from 'fs'
-import * as path from 'path'
 import ProcessEnv = NodeJS.ProcessEnv
+import {findEnvrc} from './find-envrc'
 
 export const injectEnv = (): ProcessEnv => {
-  console.log(`inject-direnv base directory: ${__dirname}`)
+  console.log(`inject-direnv base directory: ${process.env.PWD}`)
 
-  try {
-  const envrc = fs.readFileSync('.envrc') || fs.readFileSync(path.join('..', '.envrc'))
-
-  return envrc
+  return findEnvrc()
     .toString()
     .split('\n')
     .filter(line => line.startsWith('export '))
@@ -19,9 +15,5 @@ export const injectEnv = (): ProcessEnv => {
       env[variable] = value
       return env
     }, {})
-  } catch(e) {
-    console.log(`.envrc doesn't exists`)
-    process.exit()
-  }
 }
 

@@ -1,6 +1,6 @@
 # inject-direnv
 
-find `.envrc` or `../.envrc`, inject export variable
+find `.envrc`(until root directory) inject export variable
 if you are using JetBrain series, You can run IDE Run(`option` + `F11`) with injected `.envrc`
 
 ## Install
