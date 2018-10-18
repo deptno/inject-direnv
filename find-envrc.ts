@@ -1,7 +1,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-const envrc = '.envrc'
+const envrc = process.env.INJECT_DIRENV_ENVRC || '.envrc'
 
 export const findEnvrc = (pwd = process.env.PWD): string => {
   const pathEnvrc = path.join(pwd, envrc)
